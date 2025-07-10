@@ -85,12 +85,12 @@ for idx, article in enumerate(articles, start=1):
     try:
         # Try multiple selectors for images in El País articles
         img_selectors = [
-            'figure.a_m-media img',  # Main article image
-            'div.a_m-media img',     # Alternative media container
-            'img.a_m-media__img',    # Direct image class
-            'figure img',            # Generic figure image
-            'div.c_m img',           # Content module image
-            'img[src*="elpais"]'     # Any El País hosted image
+            'figure.a_m-media img',  
+            'div.a_m-media img',     
+            'img.a_m-media__img',    
+            'figure img',            
+            'div.c_m img',           
+            'img[src*="elpais"]'     
         ]
         
         img_tag = None
@@ -118,9 +118,9 @@ for idx, article in enumerate(articles, start=1):
             print(f"🖼️ Attempting to download image from: {img_url}")
             
             img_response = requests.get(img_url, headers=headers, timeout=15)
-            img_response.raise_for_status()  # Raise an exception for bad status codes
+            img_response.raise_for_status()  
             
-            # Determine file extension from URL or content type
+            
             if img_url.lower().endswith(('.jpg', '.jpeg')):
                 ext = '.jpg'
             elif img_url.lower().endswith('.png'):
@@ -128,7 +128,7 @@ for idx, article in enumerate(articles, start=1):
             elif img_url.lower().endswith('.webp'):
                 ext = '.webp'
             else:
-                # Try to get from content type
+               
                 content_type = img_response.headers.get('content-type', '')
                 if 'jpeg' in content_type or 'jpg' in content_type:
                     ext = '.jpg'

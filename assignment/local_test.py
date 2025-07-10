@@ -13,11 +13,11 @@ def test_locally():
     # Setup local Chrome driver
     service = Service(ChromeDriverManager().install())
     options = Options()
-    options.add_argument("--headless")  # Run in headless mode for faster testing
+    options.add_argument("--headless")  
     driver = webdriver.Chrome(service=service, options=options)
     
     try:
-        # Navigate to the target URL
+       
         driver.get("https://elpais.com/opinion/")
         time.sleep(3)
         
@@ -44,10 +44,8 @@ def test_locally():
         driver.quit()
 
 if __name__ == "__main__":
-    # Run local test first
     if test_locally():
         print("\n[OK] Local test passed! Proceeding to BrowserStack testing...")
-        # Import and run BrowserStack tests
         import browserstack_test
     else:
         print("\n[FAIL] Local test failed! Please fix issues before running BrowserStack tests.")

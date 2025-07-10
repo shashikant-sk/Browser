@@ -8,7 +8,6 @@ from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from selenium.webdriver.safari.options import Options as SafariOptions
 from dotenv import load_dotenv
 
-# Load credentials
 load_dotenv()
 USERNAME = os.getenv("BROWSERSTACK_USERNAME")
 ACCESS_KEY = os.getenv("BROWSERSTACK_ACCESS_KEY")
