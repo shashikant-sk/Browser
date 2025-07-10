@@ -1,0 +1,6 @@
+selenium
+beautifulsoup4
+requests
+python-dotenv
+webdriver-manager
+deep-translator
