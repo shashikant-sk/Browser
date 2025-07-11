@@ -8,6 +8,11 @@ __pycache__/
 # Virtual environment
 venv/
 
+# Scraped data (can be regenerated)
+articles_data/
+
+# Test results (changes frequently)
+browserstack_test_results.json
 
 # WebDriver logs
 *.log

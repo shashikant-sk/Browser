@@ -72,11 +72,14 @@ def run_browserstack_test():
 
 def main():
     """Main execution following the requirements"""
-    print("Cross-Browser Testing Suite")
-    print("Requirements:")
+    print("=" * 80)
+    print("CROSS-BROWSER TESTING SUITE - El País Web Scraping Project")
+    print("=" * 80)
+    print("Requirements validation:")
     print("- Run solution locally to verify functionality")
     print("- Execute on BrowserStack across 5 parallel threads")
     print("- Test desktop and mobile browsers")
+    print("- Validate Spanish content and article extraction")
     print()
     
     # Check dependencies
@@ -84,22 +87,47 @@ def main():
         return 1
     
     # Step 1: Local validation
+    print("PHASE 1: Local Environment Validation")
+    print("-" * 50)
     if not run_local_test():
-        print("[FAIL] Local test failed! Stopping execution.")
-        print("Please fix local issues before running BrowserStack tests.")
+        print("\n[CRITICAL] Local test validation failed!")
+        print("   Please fix local issues before running BrowserStack tests.")
+        print("   Common issues:")
+        print("   - Network connectivity to elpais.com")
+        print("   - Chrome driver installation")
+        print("   - Website structure changes")
         return 1
     
-    print("[OK] Local test passed! Proceeding to BrowserStack...")
+    print("\n[SUCCESS] Local validation passed!")
+    print("   All basic functionality verified locally")
     print()
     
     # Step 2: BrowserStack cross-browser testing
-    if not run_browserstack_test():
-        print("[FAIL] BrowserStack test encountered issues.")
+    print("PHASE 2: BrowserStack Cross-Browser Testing")
+    print("-" * 50)
+    
+    try:
+        if not run_browserstack_test():
+            print("\n[WARNING] Some BrowserStack tests encountered issues.")
+            print("   Check the detailed results above for specific failures.")
+            print("   Note: Partial failures may be acceptable depending on requirements.")
+            return 1
+    except Exception as e:
+        print(f"\n[ERROR] Failed to execute BrowserStack tests: {e}")
         return 1
     
-    print("\nAll tests completed successfully!")
-    print("[OK] Solution validated locally")
-    print("[OK] Cross-browser testing completed on BrowserStack")
+    print("\n" + "=" * 80)
+    print("TESTING SUITE COMPLETED SUCCESSFULLY!")
+    print("=" * 80)
+    print("Local validation: PASSED")
+    print("BrowserStack execution: COMPLETED")
+    print("Cross-browser compatibility: VERIFIED")
+    print("Spanish content validation: CONFIRMED")
+    print("\nNext Steps:")
+    print("   1. Review browserstack_test_results.json for detailed analysis")
+    print("   2. Check BrowserStack dashboard for session recordings")
+    print("   3. Verify article data extraction in articles_data/ folder")
+    print("=" * 80)
     return 0
 
 if __name__ == "__main__":
